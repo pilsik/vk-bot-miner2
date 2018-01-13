@@ -32,4 +32,19 @@ public class StatisticFarm {
         this.id = id;
         this.result = result;
     }
+
+    @Override
+    public String toString() {
+        return "StatisticFarm{" +
+                "uptime=" + uptime +
+                ", contime=" + contime +
+                ", server='" + server + '\'' +
+                ", port=" + port +
+                ", user='" + user + '\'' +
+                ", version='" + version + '\'' +
+                ", error='" + error + '\'' +
+                ", id=" + id +
+                ", result=" + result +
+                '}';
+    }
 }

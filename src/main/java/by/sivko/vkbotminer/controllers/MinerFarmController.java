@@ -3,6 +3,7 @@ package by.sivko.vkbotminer.controllers;
 import by.sivko.vkbotminer.models.StatisticFarm;
 import by.sivko.vkbotminer.services.SaveStatisticsFarmService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,8 @@ import java.util.stream.Collectors;
 @RestController
 public class MinerFarmController {
 
+    private final static Logger log = Logger.getLogger(MinerFarmController.class.getName());
+
     @Autowired
     SaveStatisticsFarmService saveStatisticsFarmService;
 
@@ -26,6 +29,7 @@ public class MinerFarmController {
             ObjectMapper mapper = new ObjectMapper();
             StatisticFarm statisticFarm = mapper.readValue(data, StatisticFarm.class);
             saveStatisticsFarmService.save(statisticFarm);
+            log.info(statisticFarm);
         } catch (IOException e) {
             e.printStackTrace();
         }
